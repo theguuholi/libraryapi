@@ -83,13 +83,25 @@ public class LivroRepositoryTest {
     public void listarPorTitulo() {
         livroRepository.listarTodos().forEach(System.out::println);
     }
+
     @Test
     public void listarNomeDosLivros() {
         livroRepository.listarNomes().forEach(System.out::println);
     }
+
     @Test
     public void listarGeneros() {
         livroRepository.listarGenerosAutoresBrasileiros().forEach(System.out::println);
+    }
+
+    @Test
+    public void findByGenero() {
+        livroRepository.findByGenero(GeneroLivro.AUTOAJUDA, "dataPublicacao").forEach(System.out::println);
+    }
+
+    @Test
+    public void findByGeneroPosicional() {
+        livroRepository.findByGeneroPosicional(GeneroLivro.AUTOAJUDA, "dataPublicacao").forEach(System.out::println);
     }
 
     @Test
