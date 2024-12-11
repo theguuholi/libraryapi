@@ -1,5 +1,6 @@
 package com.example.libraryapi.repository;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +72,7 @@ public class AutorRepositoryTest {
         livro.setTitulo(titulo);
         livro.setGenero(GeneroLivro.AUTOAJUDA);
         livro.setDataPublicacao(LocalDate.of(2014, 2, 24));
-        livro.setPreco(69.90);
+        livro.setPreco(new BigDecimal(70));
         livro.setAutor(autor);
         return livro;
     }

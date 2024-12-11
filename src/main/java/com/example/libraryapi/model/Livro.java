@@ -1,5 +1,6 @@
 package com.example.libraryapi.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -39,7 +40,7 @@ public class Livro {
 
     // @Column(name = "preco", scale = 2, precision = 18)
     @Column(name = "preco", precision = 12)
-    private Double preco;
+    private BigDecimal preco;
 
     // private UUID autorId;
     @ManyToOne(

@@ -2,6 +2,7 @@ package com.example.libraryapi.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -30,7 +31,7 @@ public class LivroRepositoryTest {
         livro.setTitulo("Java 8 Prático");
         livro.setGenero(GeneroLivro.AUTOAJUDA);
         livro.setDataPublicacao(LocalDate.of(2014, 2, 24));
-        livro.setPreco(69.90);
+        livro.setPreco(BigDecimal.valueOf(60));
 
         // var autor =
         // autorRepository.findById(UUID.fromString("e24df2e9-6973-4be0-871d-20bb562c9885")).orElse(null);
@@ -48,7 +49,7 @@ public class LivroRepositoryTest {
         livro.setTitulo("Java 9 Prático");
         livro.setGenero(GeneroLivro.AUTOAJUDA);
         livro.setDataPublicacao(LocalDate.of(2014, 2, 24));
-        livro.setPreco(69.90);
+        livro.setPreco(BigDecimal.valueOf(60));
         var livroDb = livroRepository.save(livro);
 
         var livroParaAtualizar = livroRepository.findById(livroDb.getId()).orElse(null);
@@ -60,6 +61,22 @@ public class LivroRepositoryTest {
 
         // vai carregar pq foi colocado o transactional
         System.out.println(livroAtualizado.getAutor().getNome());
+
+    }
+
+    @Test
+    public void buscaPorLivroTest() {
+        livroRepository.findByTitulo("Java 9 Prático").forEach(System.out::println);
+    }
+
+    @Test
+    public void pesquisaPorIsbnTest() {
+        livroRepository.findByIsbn("978-85-333-0223-4").forEach(System.out::println);
+    }
+
+    @Test
+    public void pesquisaPorPrecoAndTituloTest() {
+        livroRepository.findByTituloAndPreco("123", new BigDecimal(70)).forEach(System.out::println);
     }
 
     public Autor newAutor() {
