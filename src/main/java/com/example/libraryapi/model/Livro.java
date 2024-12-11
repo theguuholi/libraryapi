@@ -8,6 +8,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -39,7 +40,10 @@ public class Livro {
     private Double preco;
 
     // private UUID autorId;
-    @ManyToOne(cascade = { CascadeType.ALL })
+    @ManyToOne(
+        // cascade = { CascadeType.ALL },
+        fetch = FetchType.LAZY // por padrao e eager
+        )
     @JoinColumn(name = "autor_id")
     private Autor autor;
 
