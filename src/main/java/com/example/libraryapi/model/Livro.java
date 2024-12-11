@@ -3,6 +3,7 @@ package com.example.libraryapi.model;
 import java.time.LocalDate;
 import java.util.UUID;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -38,7 +39,7 @@ public class Livro {
     private Double preco;
 
     // private UUID autorId;
-    @ManyToOne
+    @ManyToOne(cascade = { CascadeType.ALL })
     @JoinColumn(name = "autor_id")
     private Autor autor;
 
