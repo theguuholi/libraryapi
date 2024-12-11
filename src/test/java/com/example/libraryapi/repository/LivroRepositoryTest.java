@@ -79,6 +79,25 @@ public class LivroRepositoryTest {
         livroRepository.findByTituloAndPreco("123", new BigDecimal(70)).forEach(System.out::println);
     }
 
+    @Test
+    public void listarPorTitulo() {
+        livroRepository.listarTodos().forEach(System.out::println);
+    }
+    @Test
+    public void listarNomeDosLivros() {
+        livroRepository.listarNomes().forEach(System.out::println);
+    }
+    @Test
+    public void listarGeneros() {
+        livroRepository.listarGenerosAutoresBrasileiros().forEach(System.out::println);
+    }
+
+    @Test
+    @Transactional
+    public void listarAutoresTest() {
+        livroRepository.listarAutoresDosLivros().forEach(System.out::println);
+    }
+
     public Autor newAutor() {
         Autor autor = new Autor();
         autor.setNome("Rodrigo Turini");
